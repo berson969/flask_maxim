@@ -1,0 +1,28 @@
+version: '24.0.5'
+
+
+services:
+  postgres_db:
+    image: postgres:15.0-alpine
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+    env_file:
+      - ./.env
+
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - 5001:5001
+    env_file:
+      - ./.env
+    depends_on:
+      - postgres_db
+
+    command:  ["wait-for-it", "postgres_db:5432", "--", "python3", "server.py"]
+

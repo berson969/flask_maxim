@@ -1,0 +1,4 @@
+.idea/
+.env
+Flask/__pycache__/models.cpython-310.pyc
+Flask/__pycache__/validation.cpython-310.pyc

@@ -1,0 +1,6 @@
+requests
+flask
+SQLAlchemy==1.4.49
+psycopg2-binary
+python_dotenv
+pydantic==1.10.9
